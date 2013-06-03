@@ -1,17 +1,17 @@
-require 'version/ext/array'
-require 'version/ext/module'
-require 'version/ext/hash'
-require 'version/ext/string'
+require 'app_version/ext/array'
+require 'app_version/ext/module'
+require 'app_version/ext/hash'
+require 'app_version/ext/string'
 
 require 'pathname'
 
 #
 # Encodes version-numbering logic into a convenient class.
 #
-class Version
+class AppVersion
   include Comparable
 
-  autoload :Component, 'version/component'
+  autoload :Component, 'app_version/component'
 
   #
   # Searches through the parent directories of the calling method and looks
@@ -79,8 +79,8 @@ class Version
     return self[self.length + index] = value if index < 0
 
     length = self.length - index
-    zeroes = Array.new length.abs, Version::Component.new('0')
-    value  = Version::Component.new(value.to_s)
+    zeroes = Array.new length.abs, AppVersion::Component.new('0')
+    value  = AppVersion::Component.new(value.to_s)
 
     if length >= 0
       self.components[index, length] = zeroes
@@ -224,6 +224,6 @@ class Version
   end
 end
 
-class Version
+class AppVersion
   is_versioned
 end

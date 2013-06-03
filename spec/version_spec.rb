@@ -10,7 +10,7 @@ module ImplicitVersion
   end
 end
 
-describe Version do
+describe AppVersion do
   include ImplicitVersion
   
   subject { v2_9 }
@@ -53,7 +53,7 @@ describe Version do
   end
 end
 
-describe Version do
+describe AppVersion do
   include ImplicitVersion
   
   subject { v0_10_0 }
@@ -97,7 +97,7 @@ describe Version do
 end
 
 
-describe Version, 'with a prerelease revision' do
+describe AppVersion, 'with a prerelease revision' do
   include ImplicitVersion
   
   subject { v1_6_3a }
@@ -140,7 +140,7 @@ describe Version, 'with a prerelease revision' do
   end
 end
 
-describe Version, 'with a prerelease minor version' do
+describe AppVersion, 'with a prerelease minor version' do
   include ImplicitVersion
   
   subject { v1_6a }
@@ -183,7 +183,7 @@ describe Version, 'with a prerelease minor version' do
   end
 end
 
-describe Version do
+describe AppVersion do
   include ImplicitVersion
   
   it 'should preserve equality' do

@@ -9,7 +9,7 @@ require 'spec/rake/spectask'
 
 spec = Gem::Specification.new do |s|
   s.name    = 'version'
-  s.version = Version.current or '0.0.0'
+  s.version = AppVersion.current or '0.0.0'
   s.summary = 'simple version-number encapsulation'
   
   s.author  = 'Stephen Touset'
@@ -29,7 +29,7 @@ Gem::PackageTask.new(spec) do |gem|
 end
 
 Rake::RDocTask.new do |doc|
-  doc.title    = "version #{Version.current}"
+  doc.title    = "version #{AppVersion.current}"
   doc.rdoc_dir = 'doc'
   doc.main     = 'README.rdoc'
   doc.rdoc_files.include('*.rdoc')
