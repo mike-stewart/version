@@ -85,6 +85,19 @@ class Rake::VersionTask < Rake::TaskLib
         version = (ENV['VERSION'] || '0.0.0').to_version
         puts write(version)
       end
+
+      desc 'Sets the given components of the version, only if they are greater than the current version'
+      task(:set, [:version] => filename) do |t, args|
+        version = read
+        new = args[:version].to_version
+
+        abort if (version <=> new) > 0
+
+        new.to_a.each_with_index do |component, index|
+          version[index] = component
+        end
+        puts write(version)
+      end
       
       desc "Bump to #{read.bump!}"
       task(:bump => filename) { puts write(read.bump!) }
