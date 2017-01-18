@@ -91,7 +91,7 @@ class Rake::VersionTask < Rake::TaskLib
         version = read
         new = args[:version].to_version
 
-        abort if (version <=> new) > 0
+        next if (version <=> new) > 0
 
         new.to_a.each_with_index do |component, index|
           version[index] = component
